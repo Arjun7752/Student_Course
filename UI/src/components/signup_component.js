@@ -1,10 +1,12 @@
 import React, { Component, useState } from "react";
+import HeaderPage from "./header";
 
 export default function SignUp() {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [mobile, setMobile] = useState("");
   const [userType, setUserType] = useState("");
   const [secretKey, setSecretKey] = useState("");
 
@@ -30,6 +32,7 @@ export default function SignUp() {
           lname,
           password,
           userType,
+          mobile,
         }),
       })
         .then((res) => res.json())
@@ -45,38 +48,14 @@ export default function SignUp() {
   };
 
   return (
+    <>
+    <HeaderPage />
     <div className="auth-wrapper">
       <div className="auth-inner">
         <form onSubmit={handleSubmit}>
           <h3>Sign Up</h3>
-          {/* <div>
-            Register As
-            <input
-              type="radio"
-              name="UserType"
-              value="User"
-              onChange={(e) => setUserType(e.target.value)}
-            />
-            User
-            <input
-              type="radio"
-              name="UserType"
-              value="Admin"
-              onChange={(e) => setUserType(e.target.value)}
-            />
-            Admin
-          </div> */}
-          {userType == "Admin" ? (
-            <div className="mb-3">
-              <label>Secret Key</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Secret Key"
-                onChange={(e) => setSecretKey(e.target.value)}
-              />
-            </div>
-          ) : null}
+         
+         
 
           <div className="mb-3">
             <label>First name</label>
@@ -118,6 +97,16 @@ export default function SignUp() {
             />
           </div>
 
+          <div className="mb-3">
+            <label>Mobile</label>
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Enter password"
+              onChange={(e) => setMobile(e.target.value)}
+            />
+          </div>
+
           <div className="d-grid">
             <button type="submit" className="btn btn-primary">
               Sign Up
@@ -129,5 +118,6 @@ export default function SignUp() {
         </form>
       </div>
     </div>
+    </>
   );
 }

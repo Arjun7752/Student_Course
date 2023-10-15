@@ -1,4 +1,5 @@
 import React, { Component, useState } from "react";
+import HeaderPage from "./header";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -35,6 +36,8 @@ export default function Login() {
   }
 
   return (
+    <>
+    <HeaderPage />
     <div className="auth-wrapper">
       <div className="auth-inner">
         <form onSubmit={handleSubmit}>
@@ -84,5 +87,6 @@ export default function Login() {
         </form>
       </div>
     </div>
+    </>
   );
 }
